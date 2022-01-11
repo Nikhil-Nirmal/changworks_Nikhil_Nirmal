@@ -1,7 +1,7 @@
 ## Assignment project for ChangWorks
 
 ### Demo
-<Link_here>
+https://changworks-confetti-nikhilnirmal.netlify.app/
 
 ### Instructions
 To run the project locally, follow these steps:
