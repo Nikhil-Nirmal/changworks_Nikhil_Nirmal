@@ -1,22 +1,14 @@
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";
 import { HotKeys } from 'react-hotkeys';
-import Confetti from 'react-confetti'
-import React from 'react';
-import cat from './Components/cat.gif'
-
-
+import Confetti from "react-confetti";
 let strCheck = ["c", "h", "a", "n", "g", "w", "o", "r", "k", "s"];
 let strAdd = "";
 let i = 0;
 let height = Window.height;
 let width = Window.width;
 
-function closeIt() {
-  document.getElementById("ClickMePage").style.display= "none";
-}
-
-
-class Conff extends React.Component  {
+class Conff extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,9 +33,7 @@ class HotkeysDemo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
-      output: "Type changworks...",
-      output2:""
+      show: false
     };
   }
   handleShow(value) {
@@ -52,34 +42,27 @@ class HotkeysDemo extends React.Component {
     });
   }
   a;
-  onKeyDown(keyName) {
-    this.setState({
-      output2:`${keyName.key}`,
-    });
+  onKeyDown(keyName, e, handle) {
     
-    if (keyName.key === strCheck[i]) {
+    strAdd = keyName.key;
+    console.log(strAdd);
+    if (strAdd === strCheck[i]) {
       i++;
-      strAdd = strAdd + keyName.key;
-      console.log(strAdd);
-      if(strAdd === "changworks"){
-        this.handleShow(true);
-        setTimeout(() => {
+      this.handleShow(true);
+      setTimeout(() => {
         this.handleShow(false);
       }, 1000);
+      //console.log("+");
+    } else {
       i = 0;
-      strAdd = "";
-      }
-    } 
-    else {
-      strAdd = "";
-      i = 0;
+      this.handleShow(false);
     }
   }
 
-  
-  onKeyUp(keyName){
+  onKeyUp(keyName, e, handle){
+    console.log("test:onKeyUp", e, handle);
     this.setState({
-      output2:""
+      output: `onKeyUp ${keyName.key}`
     }); 
   }
 
@@ -87,14 +70,11 @@ class HotkeysDemo extends React.Component {
     return (
       <>
         <HotKeys
-          keyname="a,	b,	c,	d,	e,	f,	g,	h,	i,	j,	k,	l,	m,	n,	o,	p,	q,	r,	s,	t,	u,	v,	w,	x,	y,	z,"
+          keyName="a,	b,	c,	d,	e,	f,	g,	h,	i,	j,	k,	l,	m,	n,	o,	p,	q,	r,	s,	t,	u,	v,	w,	x,	y,	z,"
           onKeyDown={this.onKeyDown.bind(this)}
           onKeyUp={this.onKeyUp.bind(this)}
         >
-          <div className='title'>{this.state.output}</div>
-          <div className='blink'>{this.state.output2}</div>
-          <div id='ClickMePage'> <img src={cat} alt='cat'></img>  <h2 onClick={closeIt}>Lets Go...</h2> </div>
-          
+          <div style={{ padding: "50px" }}>{this.state.output}</div>
         </HotKeys>
         <Confetti
           recycle={this.state.show}
@@ -107,15 +87,16 @@ class HotkeysDemo extends React.Component {
   }
 }
 
-
-
-const  App = () => {
+function App() {
   return (
     <div className="App">
       <Conff />
-      <HotkeysDemo  className="hotKeys"/>
+      <HotkeysDemo />
+      <h1>Type changworks...</h1>
+
     </div>
   );
 }
 
-export default App;
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);

@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');
+
+div {
+    font-family: 'Offside', cursive;
+    width: 1000x;
+    height: 340px;
+    background-color: rgb(255, 255, 255);
+    font-size: 40px;
+    text-align: center;
+    background-color: #ccd6f6;
+    color:#0a192f ;
+}.blink{
+    font-size: 50px;
+    color: #294672;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+    padding-top: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#ClickMePage {
+    border-radius: 1rem;
+    height: 630px;
+    width: 800px;
+    background-color:#294672;
+    position: absolute;
+    top: 6%;
+    left: 25%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h2 {
+    font-size: 40px;
+    color: #294672;
+    background-color:  #ccd6f6;
+    width: 30%;
+    margin:4% auto auto auto;
+    text-align: center;
+    border-radius: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2:hover {
+    cursor: grab;
 }
